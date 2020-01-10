@@ -1,35 +1,35 @@
 function pasanganTerbesar(num) {
     
-    let arrnum = num.toString().split(''); // parsing the digits into new array as strings
-    let pasangan = [];
-
-    for (i = 0; i < arrnum.length-1; i++) {
-        pasangan.push(Number(arrnum[i] + arrnum[i+1])); // putting digit couples into another array back as numbers
+    let arrNum = num.toString(); // parsing the number digits as indexable string
+    let numCouple = [];
+    
+    for (i = 0; i < arrNum.length-1; i++) {
+        numCouple.push(Number(arrNum[i] + arrNum[i+1])); // putting digit couples into an array back as numbers
     }
-    // return pasangan;
+    // return numCouple;
     
     //// the math max value method
-    // return Math.max(...pasangan);
+    // return Math.max(...numCouple);
+    ////
 
-    //// the built-in sort function method
-    // pasangan.sort(function(a,b) {return a-b;});
-    // // return pasangan;
-    // return pasangan[pasangan.length-1];
+    // the built-in sort function method
+    // numCouple.sort(function(a,b) {return b - a;});
+    // return numCouple[0];
+    ////
 
-    //// the manual ascending bubble-sort method
     let tmp;
-    for (i = 0; i < pasangan.length-1; i++) {
-        for (j = 0; j < pasangan.length-1-i; j++) {
-            if (pasangan[j] > pasangan[j+1]) {
-                tmp = pasangan[j];
-                pasangan[j] = pasangan[j+1];
-                pasangan[j+1] = tmp;
+    for (i = 0; i < numCouple.length-1; i++) {
+        for (j = 0; j < numCouple.length-1-i; j++) {
+            if (numCouple[j] < numCouple[j+1]) { // descending bubble sort
+                tmp = numCouple[j];
+                numCouple[j] = numCouple[j+1];
+                numCouple[j+1] = tmp;
             }
         }
     }
-    // return pasangan;
-    console.log(`Pasangan angka terbesar dari ${num} adalah:`)
-    return pasangan[pasangan.length-1];
+    // return numCouple;
+    console.log(`Greatest number couple from ${num}:`)
+    return numCouple[0];
 
   }
   

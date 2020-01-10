@@ -1,25 +1,23 @@
 function hitungJumlahKata(kalimat) {
     
-    // the quick way
+    let kata = '', kata2 = [];
+    
+    //// the .split method
     // let kata = kalimat.split(' '); 
     // return kata.length;
+    ////
 
-    // the "trying too hard to impress your friends and instructors" way
-    let kata = [], spasi = [];
-    
-    for (i = 0; i < kalimat.length; i++) {
-        if (kalimat[i] === ' ') {
-            spasi.push(i);
+    for (i = 0; i <= kalimat.length; i++) {
+        if (kalimat[i] === ' ' || i === kalimat.length) {
+            kata2.push(kata);
+            kata = '';
+        } else {
+            kata += kalimat[i];
         }
     }
-    spasi.unshift(-1);
-    spasi.push(kalimat.length);
-    for (j = 0; j < spasi.length-1; j++) {
-        kata.push(kalimat.slice(spasi[j]+1,spasi[j+1]));
-    }
-    // return kata.length;
-    return `The sentence \"${kalimat}\" has ${kata.length} words`;
-
+    // return kata2.length;
+    console.log(`Word count for \"${kalimat}\":`);
+    return kata2.length;
   }
   
   // TEST CASES

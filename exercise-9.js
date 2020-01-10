@@ -5,7 +5,11 @@ function cariMean(arr) {
         mean += arr[i];
     }
     mean /= arr.length; // precision mean value
+    
+    //// Math.round method to round the mean number
     // return Math.round(mean);
+    ////
+    
     mantissa = mean % 1; // floating point / mantissa / significand / digits beyond decimal point
     mean -= mantissa;
     // return [mean,mantissa];

@@ -1,21 +1,20 @@
 function tentukanDeretAritmatika(arr) {
     
     if (arr.length < 3) {
-        return 'Insufficient Data!'; // this function won't work without at least 3 elements
+        return 'Insufficient Data!'; // function won't work without at least 3 elements to process
     }
 
-    let diff = arr[1] - arr[0]; // determining arithmetic increment
+    let notArith;
+    let diff = arr[1] - arr[0]; // determining arithmetic increment from first two elements
     // console.log(diff);
-    let trfl = []; // True or False
-    for (k = 2; k < arr.length; k++) { // loop index starts at 2 
-        if (arr[k] - arr[k-1] === diff) { // comparing the increment with 3rd element substracted by 2nd element and so on
-            trfl.push(true);
-        } else {
-            trfl.push(false); // adds false value to checklist array
+    for (k = 2; k < arr.length; k++) {
+        notArith = 0; // non-arithmetic sequence indicator
+        if (arr[k] - arr[k-1] !== diff) { // comparing the increment with 3rd element substracted by 2nd element and so on
+            notArith++; // this value increases for each confirmed non-arithmeticity
         }
     }
-    // console.log(trfl);
-    return trfl.indexOf(false) > -1 ? false : true; // if checklist array has at least 1 false then parameter is not an arithmetic sequence
+    // console.log(notArith);
+    return notArith ? false : true; // if indicator is not zero (>0) then parameter is not an arithmetic sequence
   }
   
   // TEST CASES

@@ -1,46 +1,74 @@
 function groupAnimals(animals) {
     
-    var abc = [];
-    for (p = 0; p < animals.length; p++) { // generating alphabet index array from parameter
-        abc.push(animals[p][0]);
+//     var abc = [];
+//     for (p = 0; p < animals.length; p++) { // generating alphabet index array from parameter
+//         abc.push(animals[p][0]);
         
-    }
-    // console.log(abc);
+//     }
+//     // console.log(abc);
+
+//     var tmp;
+//     for (q = 0; q < abc.length-1; q++) { // ascending bubble-sort for alphabet index array
+//         for (r = 0; r < abc.length-1-q; r++) {
+//             if (abc[r] > abc[r+1]) {
+//                 tmp = abc[r];
+//                 abc[r] = abc[r+1];
+//                 abc[r+1] = tmp;
+//             }
+//         }
+//     }
+//     // console.log(abc);
+    
+//     let s = 0;
+//     while (s < abc.length-1) { // removing duplicate alphabet index elements
+//         if (abc[s] === abc[s+1]) {
+//             abc.splice(s+1,1);
+//         } else {
+//             s++;
+//         }
+//     }
+//     // console.log(abc);
+
+//     var zoo = [], typ = [];
+//     for (t = 0; t < abc.length; t++) { // inserting parameter elements to new multidimensional array categorised using alphabet index array
+//         typ = [];
+//         for (u = 0; u < animals.length; u++) {
+//             if (animals[u][0] === abc[t]) {
+//                 typ.push(animals[u]);
+//             }
+//         }
+//         zoo.push(typ);
+//     }
+//     return zoo;
 
     var tmp;
-    for (q = 0; q < abc.length-1; q++) { // ascending bubble-sort for alphabet index array
-        for (r = 0; r < abc.length-1-q; r++) {
-            if (abc[r] > abc[r+1]) {
-                tmp = abc[r];
-                abc[r] = abc[r+1];
-                abc[r+1] = tmp;
+    for (i = 0; i < animals.length-1; i++) {
+        for (j = 0; j < animals.length-1-i; j++) {
+            if (animals[j][0] > animals[j+1][0]) {
+                tmp = animals[j];
+                animals[j] = animals[j+1];
+                animals[j+1] = tmp;
             }
         }
     }
-    // console.log(abc);
-    
-    let s = 0;
-    while (s < abc.length-1) { // removing duplicate alphabet index elements
-        if (abc[s] === abc[s+1]) {
-            abc.splice(s+1,1);
-        } else {
-            s++;
-        }
-    }
-    // console.log(abc);
+    // return animals;
 
-    var zoo = [], typ = [];
-    for (t = 0; t < abc.length; t++) { // inserting parameter elements to new multidimensional array categorised using alphabet index array
-        typ = [];
-        for (u = 0; u < animals.length; u++) {
-            if (animals[u][0] === abc[t]) {
-                typ.push(animals[u]);
+    var zoo = [];
+    for (i = 0; i < animals.length; i++) {
+        var knownAnimal = -1;
+        for (j = 0; j < zoo.length; j++) {
+            if (animals[i][0] === zoo[j][0][0]) {
+                knownAnimal = j;
             }
         }
-        zoo.push(typ);
+
+        if (knownAnimal === -1) {
+            zoo.push([animals[i]]);
+        } else {
+            zoo[knownAnimal].push(animals[i]);
+        }
     }
     return zoo;
-
 }
 
 // TEST CASES

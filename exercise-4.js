@@ -51,9 +51,17 @@ function dataHandling2(arr) {
     console.log(month);
 
     // OUTPUT 3
-    date.sort(function(a,b){
-        return b - a;
-    });
+    
+    var tmp;
+    for (i = 0; i < date.length-1; i++) {
+        for (j = 0; j < date.length-1-i; j++) {
+            if (Number(date[j]) < Number(date[j+1])) { // ascending bubble sort
+                tmp = date[j];
+                date[j] = date[j+1];
+                date[j+1] = tmp;
+            }
+        }
+    }
     console.log(date);
     
     // OUTPUT 4
@@ -69,10 +77,10 @@ function dataHandling2(arr) {
 
 var input = ["0001", "Roman Alamsyah ", "Bandar Lampung", "21/05/1989", "Membaca"];
 console.log('');
-console.log('Data Input:');
+console.log('Input:');
 console.log(input);
 console.log('');
-console.log('Data Output:');
+console.log('Output:');
 dataHandling2(input);
 console.log('');
 

@@ -1,31 +1,26 @@
 function angkaPalindrome(num) {
 
-    // declaring necessary variables that shouldn't be redeclared in loopings
-    let arrnum = [];
-    let len;
-    let wtf; // short for "Whether True or False"
+    let oriNum = num;
+    let strNum = '';
+    let len; // half-length of number digit count
+    let notPal; // non-palindromity indicator
 
-    
-    // looping for checking number palindromity
     do {
-        wtf = [];
+        notPal = 0;
         num++; // because the point of this function is to find the next palindrome other than the original number
         // console.log(num);
-        arrnum = num.toString().split(''); // number parsed in array form to be able to be checked digit-by-digit
-        len = Math.floor(arrnum.length/2); // half-length of number digit count
+        strNum = num.toString();
+        len = Math.floor(strNum.length/2);
         for (i = 0; i < len; i++) { 
-            // console.log(arrnum);
-            if (arrnum[i] === arrnum[arrnum.length-1-i]) {  // first element will be compared to last element
-                wtf.push(true)                              // second element will be compared to next-to-last element
-            } else {                                        // and so on
-                wtf.push(false) // a true indicator for each digit check that indicates palindromity between two mirroring digits
-            }                   // a false indicator for vice versa
+            // console.log(strNum);
+            if (strNum[i] !== strNum[strNum.length-1-i]) {  // first element will be compared to last element
+                notPal++;                                   // second element will be compared to next-to-last element
+            }                                               // and so on
         }
-        // console.log(wtf);
-    } while (wtf.indexOf(false) > -1) // as long as number does not fulfill mirroring values requirement this while loop will keep on looping
+        // console.log(notPal);
+    } while (notPal) // as long as notPal is true (notPal > 0), this while loop will keep on looping
     
-    console.log(`Next palindrome for ${num}?`);
-    return num;
+    return `Next palindrome for ${oriNum} is ${num}`;
 }
 
 // TEST CASES

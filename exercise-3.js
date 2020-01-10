@@ -1,10 +1,12 @@
 function dataHandling(arr) {
+    var data = '';
     for (i = 0; i < arr.length; i++) {
-        console.log(`Nomor ID     : ${arr[i][0]}`);
-        console.log(`Nama Lengkap : ${arr[i][1]}`);
-        console.log(`TTL          : ${arr[i][2]}, ${arr[i][3]}`);
-        console.log(`Hobi         : ${arr[i][4]}\n`);
+        data += `\nNomor ID     : ${arr[i][0]}\n`;
+        data +=   `Nama Lengkap : ${arr[i][1]}\n`;
+        data +=   `TTL          : ${arr[i][2]}, ${arr[i][3]}\n`;
+        data +=   `Hobi         : ${arr[i][4]}\n`;
     }
+    return data;
 }
 
 var input = [
@@ -14,5 +16,4 @@ var input = [
     ["0004", "Bintang Senjaya", "Martapura", "6/4/1970", "Berkebun"]
 ]
 
-console.log(''); // <-- biar enak diliat aja hasilnya
-dataHandling(input);
+console.log(dataHandling(input));
